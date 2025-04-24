@@ -1,8 +1,15 @@
-Scenario: Insert into Model A → Update Model B → If Condition Fails, Send Notification
-1.Use a Django trigger (django-pgtrigger) to automatically update Model B when Model A is inserted.
-2.Use a Django signal (post_save) to check Model B's condition and send a notification if it fails.
+---
 
-# Define Models (A & B)
+### Scenario: Insert into Model A → Update Model B → If Condition Fails, Send Notification
+
+1. Use a Django trigger (`django-pgtrigger`) to automatically update **Model B** when **Model A** is inserted.
+2. Use a Django signal (`post_save`) to check **Model B's** condition and send a notification if it fails.
+
+---
+
+### Define Models (A & B)
+
+```python
 import django_pgtrigger as pgtrigger
 from django.db import models
 
@@ -20,9 +27,15 @@ class ModelB(models.Model):
 
     class Meta:
         app_label = 'myapp'
-        
-# Use a Trigger to Auto-Update Model B
-We create a trigger that inserts/updates Model B automatically when a new record is added to Model A.
+```
+
+---
+
+### Use a Trigger to Auto-Update Model B
+
+We create a trigger that inserts/updates **Model B** automatically when a new record is added to **Model A**.
+
+```python
 pgtrigger.register(
     pgtrigger.Trigger(
         name="update_model_b_on_insert_a",
@@ -38,8 +51,13 @@ pgtrigger.register(
         ),
     )
 )(locals())  # Attach trigger to ModelA
+```
 
-# Use a Django Signal to Check Model B and Send a Notification
+---
+
+### Use a Django Signal to Check Model B and Send a Notification
+
+```python
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
@@ -54,3 +72,6 @@ def check_model_b_status(sender, instance, **kwargs):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=['admin@example.com'],
         )
+```
+
+---

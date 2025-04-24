@@ -4,6 +4,11 @@ Supports common trigger operations like INSERT, UPDATE, and DELETE.
 Allows conditional triggers using Django's ORM-like expressions.
 Integrates well with Django's migration system.
 
+In many cases, constraints (like CHECK, UNIQUE, or FOREIGN KEY) are preferred because they are simpler and built into the database. However, there are some situations where triggers (like those provided by django-pgtrigger) are more flexible.
+A CHECK constraint can prevent updates when a condition is met, but PostgreSQL constraints only work on the new row values. In this case, we need to compare the old and new values of is_deleted, which CHECK constraints cannot do.
+
+
+
 Step 1: Install django-pgtrigger
 pip install django-pgtrigger
 

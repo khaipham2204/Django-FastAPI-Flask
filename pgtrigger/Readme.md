@@ -1,5 +1,3 @@
-Here’s a more beautifully formatted version of your `Readme.md`:
-
 ```markdown
 # Django PGTrigger
 

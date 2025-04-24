@@ -93,6 +93,3 @@ Action: Block updates
 ---
 
 Enjoy seamless PostgreSQL trigger integration with Django!
-```
-
-This version includes headers, better formatting, and a clean structure to make it more readable and professional. Let me know if you'd like further refinements!

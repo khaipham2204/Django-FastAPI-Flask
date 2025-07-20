@@ -1,5 +1,3 @@
-Here’s a beautified version of your README.md file with improved formatting, headers, code blocks, emojis, and tips for clarity:
-
 ```markdown
 # 📦 Django Database Export & Import
 

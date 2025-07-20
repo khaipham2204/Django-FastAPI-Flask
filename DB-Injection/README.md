@@ -24,7 +24,7 @@ python manage.py dumpdata auth.User > users.json
 ## 📥 Import Database from JSON
 
 Load data from a JSON file into your database:
-```bash
+```
 python manage.py loaddata db.json
 ```
 > **Note:**  
@@ -44,4 +44,3 @@ python manage.py loaddata db.json
 ---
 
 Happy coding! ✨
-```

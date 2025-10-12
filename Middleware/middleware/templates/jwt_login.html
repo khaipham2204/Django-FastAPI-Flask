@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JWT Login</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 50px; }
+    form { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; }
+    input[type=text] { width: 100%; padding: 10px; margin: 10px 0; }
+    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <h2>Nhập JWT Token để truy cập admin</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <label>Access Token:</label>
+    <input type="text" name="token" placeholder="Nhập JWT access token..." required>
+    
+    <label>Refresh Token (tùy chọn):</label>
+    <input type="text" name="refresh_token" placeholder="Nhập refresh token (tùy chọn)...">
+    
+    <button type="submit">Lưu Token & Đăng nhập</button>
+  </form>
+  
+  <hr>
+  <h3>Hoặc lấy token mới:</h3>
+  <p>Truy cập: <a href="/api/token/" target="_blank">/api/token/</a> với username và password để lấy token mới.</p>
+
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
